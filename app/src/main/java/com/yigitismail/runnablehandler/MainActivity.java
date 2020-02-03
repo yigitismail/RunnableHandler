@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
@@ -13,6 +14,7 @@ public class MainActivity extends AppCompatActivity {
     int number;
     Runnable runnable;
     Handler handler;
+    Button button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         textView = findViewById(R.id.textView);
+        button = findViewById(R.id.button);
         number = 0;
 
 
@@ -42,11 +45,20 @@ public class MainActivity extends AppCompatActivity {
         };
 
         handler.post(runnable);
+        button.setEnabled(false);
 
 
     }
 
     public void stop(View view){
+
+        button.setEnabled(true);
+
+        handler.removeCallbacks(runnable);
+
+        number = 0;
+
+        textView.setText("Time: " + number);
 
     }
 }
