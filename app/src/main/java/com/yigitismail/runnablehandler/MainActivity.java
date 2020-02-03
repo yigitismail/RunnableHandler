@@ -28,14 +28,14 @@ public class MainActivity extends AppCompatActivity {
     public void start(View view){
 
         handler = new Handler();
+
         runnable = new Runnable() {
             @Override
             public void run() {
 
-                textView.setText("Number: " + number);
+                textView.setText("Time: " + number);
                 number++;
-                textView.setText("Number: " + number);
-
+                textView.setText("Time: " + number);
                 handler.postDelayed(runnable,1000);
 
             }
